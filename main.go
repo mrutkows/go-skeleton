@@ -30,7 +30,7 @@ import (
 // for example, LDFLAGS=-ldflags "-X main.Version=${VERSION}
 var (
 	// public
-	Project = "sbom-utility"
+	Project = "go-skeleton"
 	Binary  = "unset"
 	Version = "X"
 	// package private
