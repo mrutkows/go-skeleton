@@ -18,7 +18,7 @@
 SOURCEDIR=.
 
 SOURCES := $(shell find $(SOURCEDIR) -name '*.go')
-BINARY=sbom-utility
+BINARY=myprogram
 
 # LDFLAG values
 VERSION=latest
