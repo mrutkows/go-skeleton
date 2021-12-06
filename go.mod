@@ -1,4 +1,4 @@
-module github.com/mrutkows/sbom-utility
+module github.com/mrutkows/go-skeleton
 
 go 1.16
 
