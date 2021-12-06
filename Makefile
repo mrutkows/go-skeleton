@@ -18,7 +18,7 @@
 SOURCEDIR=.
 
 SOURCES := $(shell find $(SOURCEDIR) -name '*.go')
-BINARY=myprogram
+BINARY=go-skeleton
 
 # LDFLAG values
 VERSION=latest
