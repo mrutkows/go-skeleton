@@ -1,8 +1,13 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"reflect"
 
+	"github.com/mrutkows/go-skeleton/utils"
 	"github.com/spf13/cobra"
 	"github.com/xeipuuv/gojsonschema"
 )
