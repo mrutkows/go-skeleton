@@ -26,7 +26,8 @@ import (
 
 // Test DumpStruct method will error on Arrays
 func TestDumpStructError(t *testing.T) {
-
-	err := DumpStruct("os.Args", os.Args)
-	assert.NotNil(t, err)
+    logger := NewLogger()
+    logger.SetLevel(TRACE)
+    err := logger.DumpStruct("os.Args", os.Args)
+    assert.NotNil(t, err)
 }

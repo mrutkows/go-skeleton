@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mrutkows/sbom-utility/log"
-	"github.com/mrutkows/sbom-utility/utils"
+	"github.com/mrutkows/go-skeleton/log"
+	"github.com/mrutkows/go-skeleton/utils"
 	"github.com/spf13/cobra"
 )
+
+var loggers log.MyLog
 
 const (
 	FLAG_VERBOSE               = "verbose"
@@ -19,19 +21,18 @@ const (
 )
 
 var rootCmd = &cobra.Command{
-	Use:           "spdx-parser",
+	Use:           utils.Flags.Project,
 	SilenceErrors: true,
 	SilenceUsage:  true,
 	Short:         "Root Short Desc.",
 	Long:          "Root Long Desc.",
-	RunE:          RootCmdImp,
+	RunE:          RootCmdImpl,
 }
 
-var loggers log.MyLog
-
-func RootCmdImp(cmd *cobra.Command, args []string) error {
-
+func RootCmdImpl(cmd *cobra.Command, args []string) error {
+	loggers.Enter()
 	//fmt.Printf("cmd: %+v\nargs: %v\n", cmd, args)
+	loggers.Exit()
 	return nil
 }
 
@@ -51,10 +52,9 @@ func init() {
 
 func initConfig() {
 	loggers.Enter()
-	err := log.DumpStruct("utils.Flags", utils.Flags)
-	//err := log.DumpStruct("os.Args", os.Args)
+	err := loggers.DumpStruct("utils.Flags", utils.Flags)
 	if err != nil {
-		loggers.Error("structName", err.Error())
+		loggers.Error(err.Error())
 	}
 	loggers.Exit()
 }
@@ -64,6 +64,7 @@ func Execute(programLogger log.MyLog) {
 	loggers = programLogger
 	loggers.Enter()
 	if err := rootCmd.Execute(); err != nil {
+		// TODO:
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
