@@ -1,5 +1,3 @@
-package log
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -17,17 +15,21 @@ package log
  * limitations under the License.
  */
 
+package log
+
 import (
-	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
-// Test DumpStruct method will error on Arrays
-func TestDumpStructError(t *testing.T) {
-    logger := NewLogger()
-    logger.SetLevel(TRACE)
-    err := logger.DumpStruct("os.Args", os.Args)
-    assert.NotNil(t, err)
+// Test constructors
+func TestNewDefaultLogger(t *testing.T) {
+    logger := NewDefaultLogger()
+    assert.NotNil(t, logger)
+}
+
+func TestNewLogger(t *testing.T) {
+    logger := NewLogger(TRACE)
+    assert.NotNil(t, logger)
 }
